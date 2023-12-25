@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js"></script>
+    <title>Thanhtoán</title>
+    <style>
+        body{
+            text-align: center;
+            border: 3px solid transparent;
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+        .product-item {
+        padding-bottom: 10px; /* Khoảng cách dưới cho các sản phẩm */
+        }
+
+    </style>
+</head>
+<body>
+    <!--Chạy quảng cáo-->
+    <marquee direction="left" style="background:orange;border: 1px solid transparent;box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);">Chào mừng khách hàng đến với BonBon Deliciou Food - Hân hạnh khi được phục vụ quý khách </marquee>
+    <!--Logo-diachi-giohang-->
+    <style>
+      .main_header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          height: auto;
+          border: 3px solid transparent;
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+          padding: 5px;
+          background-color: #1c1b1b;
+      }
+
+      .logo img {
+          margin-top: 10px;
+          margin-left: 20px;
+      }
+
+      .diachi,
+      .giohang {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          color: aliceblue;
+      }
+
+      .diachi svg,
+      .giohang svg {
+          width: 20px;
+          height: 20px;
+          color: red;
+          margin-left: 10px;
+      }
+
+      .giohang button {
+          cursor: pointer;
+          width: 120px;
+          height:40px;
+          margin-right: 40px;
+          background-color: yellow;
+          font-weight: bold;
+          border-radius: 68px;
+      } 
+  </style>
+</head>
+<body>
+  <div class="main_header">
+      <div class="logo">
+          <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/355148494_801249674717913_8717127358049488144_n.png?stp=dst-png_p206x206&_nc_cat=102&ccb=1-7&_nc_sid=aee45a&_nc_ohc=AAwW_KkpFz0AX-eOh4l&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdSGWpbFj-tv0tVsDBM2lR3EyRv0o1FD8GwwPjdJCAwSPg&oe=64C2A075" alt="">
+      </div>
+      <div class="diachi">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+          </svg>
+          <span>Địa chỉ:</span>
+          <a>165-Hai Bà Trưng-Hà Nội</a>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+          </svg>
+          <span>Hỗ trợ mua hàng: 0964xxxx36</span>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+          </svg>
+          <span>Hỗ trợ bảo hành: 0985xxxx42</span>
+      </div>
+      <div class="giohang">
+          <a href="Giohang.HTML"><button type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+              </svg>
+              Giỏ hàng
+          </button></a>
+      </div>
+  </div>
+  <!--menu-->
+  <style>
+      .main_menu {
+      background-color: rgba(128, 255, 0, 0.716);
+      height: 59px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      border: 1px solid transparent;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    }
+    .main_menu ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      margin-left: 400px;
+    }
+  
+    .main_menu li {
+      display: inline-block;
+      margin-right: 10px;
+    }
+  
+    .main_menu li:last-child {
+      margin-right: 0;
+    }
+  
+    .main_menu li a {
+      display: block;
+      padding: 10px 20px;
+      text-decoration: none;
+      color: #000;
+    }
+  
+    .main_menu li a:hover {
+      background-color: #ccc;
+    }
+    </style>
+    
+    <div class="main_menu">
+      <ul>
+        <li><a href="Trangchu.HTML">Trang chủ</a></li>
+        <li><a href="Sanpham.HTML">Sản phẩm</a></li>
+        <li><a href="#">Dịch vụ</a></li>
+        <li><a href="#">Giới thiệu</a></li>
+        <li><a href="#">Liên hệ</a></li>
+      </ul>
+      <!---Tìm kiếm--->
+      <style>
+          .search-form {
+            display: flex;
+            align-items: center;
+          }
+        
+          .search-input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            margin-left: 150px;
+          }
+        
+          .search-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 5px;
+            margin-right: 50px;
+          }
+        </style>
+        <form class="search-form">
+          <input type="text" class="search-input" placeholder="Tìm kiếm...">
+          <button type="submit" class="search-button">Tìm</button>
+        </form>
+    </div>
+   
+    <!---ảnh trình chiếu--->
+    <div class="slideshow">
+      <style>
+          .slideshow-container {
+          position: relative;
+          width: 700px;
+          height: 800px; /* Điều chỉnh chiều cao slideshow */
+          overflow: hidden;
+          }
+
+          .slide {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+          transition: opacity 1s ease-in-out;
+          }
+
+          .slide.active {
+          opacity: 1;
+          }
+
+          .slide img {
+          width: 100%;
+          height: 1000px;
+          object-fit: cover;
+          }
+          .container {
+          display: flex;
+          }
+
+          .slideshow-container {
+          flex: 1;
+          }
+          .container{
+            border: 1px solid transparent;
+              box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+          }
+      </style>
+       <div  class="container">
+        <div class="slideshow-container">
+            <div class="slide">
+            <img src="https://giadinh.mediacdn.vn/296230595582509056/2022/12/30/toi-nay-an-gi-167236732141564694536.jpg" alt="Image 1" >
+            </div>
+            <div class="slide">
+            <img src="https://inkythuatso.com/uploads/thumbnails/800/2022/01/background-do-an-inkythuatso-24-10-33-56.jpg" alt="Image 2">
+            </div>
+            <div class="slide">
+                <img src="https://candangstudio.com/wp-content/uploads/2020/08/50191330151_4497957154_o.jpg" alt="Image 1">
+            </div>
+            <div class="slide">
+                <img src="https://images.squarespace-cdn.com/content/v1/53883795e4b016c956b8d243/1597821998048-538UNQI253SYL3KE9NGD/chup-anh-mon-an-breakfast-10.jpg" alt="Image 2">
+            </div>
+            <div class="slide">
+                <img src="https://toplist.vn/images/800px/viet-nam-330986.jpg" alt="Image 1">
+            </div>
+            <div class="slide">
+                <img src="https://eventusproduction.com/wp-content/uploads/2016/12/fresh-box-1.jpg" alt="Image 2">
+            </div>
+            <div class="slide">
+                <img src="https://karaoke.com.vn/wp-content/uploads/2020/11/Sun-ga-scaled.jpg" alt="Image 1">
+            </div>
+            <div class="slide">
+                <img src="https://candangstudio.com/wp-content/uploads/2020/08/50191330151_4497957154_o.jpg" alt="Image 2">
+            </div>
+        </div>
+       </div>
+          <!-- Script slideshow -->
+          <script>
+                  const slides = document.querySelectorAll('.slide');
+                  let currentSlide = 0;
+
+                  function showSlide(index) {
+                  slides.forEach((slide) => {
+                      slide.classList.remove('active');
+                  });
+                  slides[index].classList.add('active');
+                  }
+
+                  function nextSlide() {
+                  currentSlide++;
+                  if (currentSlide === slides.length) {
+                      currentSlide = 0;
+                  }
+                  showSlide(currentSlide);
+                  }
+
+                  setInterval(nextSlide, 2000); // Thay đổi slide sau mỗi 2 giây
+
+                  // Hiển thị slide đầu tiên khi tải trang
+                  showSlide(currentSlide);
+          </script>
+    <style>
+      /* Các style khác */
+      .body{
+          text-align: center;
+          border: 3px solid transparent;
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+          background-color: bisque;
+      }
+      .payment-info {
+          margin: 20px;
+          padding: 20px;
+          border: 1px solid #ccc;
+          background-color: #f9f9f9;
+      }
+
+      .product {
+          display: flex;
+          align-items: center;
+          margin-bottom: 10px;
+      }
+
+      .product-image {
+          width: 100px;
+          height: 100px;
+          margin-right: 10px;
+      }
+
+      .product-info {
+          flex-grow: 1;
+      }
+
+      .product-info h3 {
+          margin: 0;
+      }
+
+      .product-info p {
+          margin: 0;
+      }
+
+      .separator {
+          border-top: 1px dashed black;
+          margin: 10px 0;
+      }
+      .paymentCart{
+        margin-right: 10px;
+      }
+  </style>
+      <div class="body">
+        <h2>Thông tin thanh toán</h2>
+        <div class="payment-info">
+          <!-- Hiển thị thông tin sản phẩm từ giỏ hàng -->
+          <div id="paymentCart"></div>
+          <!-- Hiển thị tổng giá -->
+          <div id="totalPrice"></div>
+       </div>
+        <!-- Form thanh toán -->
+        <h2>Thông tin khách hàng:</h2>
+        <form>
+          Name: <input style="margin-top:10px;" type="text" id="name" name="name" required> <br>
+          Email: <input style="margin-top:10px;" type="text" id="email" name="email" required><br>
+          Địa chỉ: <input style="margin-top:10px;height: 20px;" type="text" id="address" name="address" required><br>
+          Số điện thoại: <input  style="margin-top:10px;" type="tel" id="phone" name="phone" required><br>
+          Phương thức thanh toán:
+          <select style="margin-top:10px;" id="payment-method" name="payment-method" required>
+            <option>Chọn phương thức thanh toán</option>
+            <option>Thanh toán khi nhận hàng</option>
+            <option>Thẻ tín dụng/Ghi nợ</option>
+          </select>
+          <button style="display: flex;margin-left: 730px;margin-top: 10px;margin-bottom: 20px;" type="button" id="insert">Đặt hàng</button>
+        </form>
+      </div>
+      <!---Cuối trang--->
+      <div class="footer-item">
+        <style>
+          .footer-item {
+            border: 1px solid transparent;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+          }
+        
+          .footer,
+          ul,
+          li {
+            margin: 0;
+            padding: 0;
+            color: #fff; 
+          }
+        
+          ul,
+          a {
+            cursor: pointer;
+            text-decoration: none;
+           
+          }
+        
+          footer {
+            background-color: gray;
+            color: white;
+            text-align: center;
+            padding: 20px;
+          }
+        
+          .footer-columns {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;/* căn theo dọc */
+            flex-wrap: wrap; /* ngắt dòng */
+          }
+        
+          .footer-column {
+            flex: 1; 
+            max-width: 300px;
+            margin: 10px; 
+          }
+        
+          .center-image {
+            max-width: 100%;
+            margin: 10px;
+          }
+        
+          .social-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        
+          .social-icons a {
+            margin: 0 10px;
+          }
+        
+          .social-icons img {
+            width: 30px;
+            height: 30px;
+          }
+        
+         /* Thêm kiểu mới cho hai cột có văn bản trên một hàng */
+          .footer-column ul {
+            display: flex;
+            flex-direction: column;
+          }
+        
+          .footer-column ul li {
+            margin-bottom: 10px;
+          }
+          .footer-column ul a {
+          color: white;
+          }
+        </style>
+      <footer>
+        <ul class="footer-columns">
+          <li class="footer-column">
+            <h3>Thông tin liên hệ </h3>
+            <ul >
+              <li ><a href="#">Hỗ trợ chăm sóc khách hàng: 098xxxx442</a></li>
+              <li><a href="#">Email: dangphucvghy195@gmail.com</a></li>
+              <li><a href="#">Hỗ trợ đặt hàng: 096xxxx836</a></li>
+            </ul>
+          </li>
+          <li class="footer-column">
+            <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/396666030_6693421187402854_5381472096329388871_n.png?stp=dst-png_p206x206&_nc_cat=100&ccb=1-7&_nc_sid=510075&_nc_eui2=AeFcvxLm4DrjQcz9GuFVrgoiYaKNGTwR-SJhoo0ZPBH5Iu8jmXtATcpQR51wqEf8bGZjDyybCS2WagEBsbP0_6VF&_nc_ohc=Tucf6CQxJAwAX_PMXce&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdRzhinRdrmoARAwzzdhCF_tcLSfZhjwkETyptosZ45sWw&oe=657E6FBC" alt="Logo" class="center-image">
+            <div class="social-icons">
+              <a href="https://www.google.com" target="_blank"><img src="https://img.idesign.vn/2023/02/idesign_logogg_1.jpg" alt="Google"></a>
+              <a href="https://www.facebook.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1200px-Facebook_Logo_%282019%29.png" alt="Facebook"></a>
+              <a href="https://www.twitter.com" target="_blank"><img src="https://cdn.pixabay.com/photo/2017/08/23/11/30/twitter-2672572_1280.jpg" alt="Twitter"></a>
+            </div>
+          </li>
+          <li class="footer-column">
+            <h3>Hỗ trợ khách hàng</h3>
+            <ul>
+              <li><a href="#">Hướng dẫn mua hàng online </a></li>
+              <li><a href="#">Thông tin khuyến mại</a></li>
+              <li><a href="#">Góp ý, khiếu lại</a></li>
+            </ul>
+          </li>
+        </ul>
+      </footer>
+    </div>
+  <style>
+    #scroll-to-top-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 9999;
+        display: none;
+        padding: 10px;
+        background-color: #555;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        border-radius: 99px;
+        background-color:black;
+      }
+
+      #scroll-to-top-btn:hover {
+        background-color: lightgreen;
+      }
+      #scroll-to-top-btn svg{
+          width: 30px;
+          height: 20px;
+      }
+  </style>
+  <button id="scroll-to-top-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l7.5-7.5 7.5 7.5m-15 6l7.5-7.5 7.5 7.5" />
+  </svg>
+  </button>
+  <script>
+    window.addEventListener('scroll', function() {
+      var scrollToTopBtn = document.getElementById('scroll-to-top-btn');
+      if (window.pageYOffset > 200) {
+        scrollToTopBtn.style.display = 'block';
+      } else {
+        scrollToTopBtn.style.display = 'none';
+      }
+    });
+
+    document.getElementById('scroll-to-top-btn').addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</div>
+</body>
+</html>
+
+<script>
+  // Lấy thông tin sản phẩm từ localStorage
+  var paymentCartItems = JSON.parse(localStorage.getItem("cartItems"));
+
+  // Hiển thị sản phẩm và tính tổng giá trong đơn hàng
+  var paymentCartDiv = document.getElementById("paymentCart");
+  var totalPriceDiv = document.getElementById("totalPrice");
+  var totalPrice = 0;
+
+  if (paymentCartItems && paymentCartItems.length > 0) {
+      for (var i = 0; i < paymentCartItems.length; i++) {
+          var paymentCartItem = paymentCartItems[i];
+          var productDiv = document.createElement("div");
+          productDiv.className = "product";
+          productDiv.innerHTML = `
+              <img class="product-image" src="${paymentCartItem.image}">
+              <div class="product-info">
+                  <h3>${paymentCartItem.name}</h3>
+                  <p>Số lượng: ${paymentCartItem.quantity}</p>
+                  <p>Giá: ${paymentCartItem.price}</p>
+              </div>
+          `;
+          paymentCartDiv.appendChild(productDiv);
+
+          // Thêm gạch ngăn giữa các sản phẩm
+          if (i !== paymentCartItems.length - 1) {
+              var separatorDiv = document.createElement("div");
+              separatorDiv.className = "separator";
+              paymentCartDiv.appendChild(separatorDiv);
+          }
+
+          // Tính tổng giá
+          totalPrice += paymentCartItem.price * paymentCartItem.quantity;
+      }
+
+      // Hiển thị tổng giá
+      totalPriceDiv.innerHTML = `<p>Tổng giá: ${totalPrice}</p>`;
+  } else {
+      paymentCartDiv.innerHTML = "<p>Không có sản phẩm trong giỏ hàng</p>";
+      totalPriceDiv.innerHTML = "<p>Tổng giá: 0</p>";
+  }
+</script>
+<script>
+  $(document).ready(function () {
+    $('#insert').click(function () {
+        var name = $('#name').val();
+        var email = $('#email').val();
+        var address = $('#address').val();
+        var phone = $('#phone').val();
+        var paymentMethod = $('#payment-method').val();
+
+        if (name === '' || email === '' || address === '' || phone === '' || paymentMethod === 'Chọn phương thức thanh toán') {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Qúy khách xin vui lòng điền đầy đủ thông tin đơn hàng.',
+            });
+        } else {
+            Swal.fire({
+                icon: 'success',
+                title: 'Đặt hàng thành công!',
+                html: 'Name: ' + name + '<br>Email: ' + email + '<br>Address: ' + address + '<br>Số điện thoại: ' + phone + '<br>Phương thức thanh toán: ' + paymentMethod,
+                showConfirmButton: true,
+                timer: 3000, // Set a 3-second timer
+                timerProgressBar: true,
+            }).then(function () {
+                // Thực hiện xóa sản phẩm trong giỏ hàng 
+                clearCarts();
+                // Redirect to 'camon.html' after the timer expires
+                
+                    window.location.href = 'camon.html';
+               
+            });
+        }
+    });
+  });
+</script>
+
+
+

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cảm ơn và đánh giá</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #f5f5f5;
+        }
+
+        #chef-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 500px;
+        }
+
+        #chef-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 10%;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .review-container {
+            margin-top: 150px;
+            text-align: center;
+            padding: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            color: #666;
+            max-width: 600px;
+            margin-bottom: 20px;
+        }
+
+        .rating {
+            font-size: 30px;
+            margin: 20px 0;
+            cursor: pointer;
+        }
+
+        .star {
+            color: #ffd700;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="chef-container">
+        <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/396666030_6693421187402854_5381472096329388871_n.png?stp=dst-png_p206x206&_nc_cat=100&ccb=1-7&_nc_sid=510075&_nc_eui2=AeFcvxLm4DrjQcz9GuFVrgoiYaKNGTwR-SJhoo0ZPBH5Iu8jmXtATcpQR51wqEf8bGZjDyybCS2WagEBsbP0_6VF&_nc_ohc=Tucf6CQxJAwAX_PMXce&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdRzhinRdrmoARAwzzdhCF_tcLSfZhjwkETyptosZ45sWw&oe=657E6FBC" alt="Logo" id="chef-image">
+        <h1>Cảm ơn bạn đã ghé thăm!</h1>
+        <p style="font-size: 20px;">Chúng tôi rất vui mừng vì sự hiện diện của bạn rất vui được phục vụ khách hàng.</p>
+    </div>
+    <div class="review-container">
+        <h1>Đánh Giá Cho Ứng Dụng Nhà Hàng</h1>
+        <div class="rating" id="rating-container">
+            <span class="star" data-star="1">&#9733;</span>
+            <span class="star" data-star="2">&#9733;</span>
+            <span class="star" data-star="3">&#9733;</span>
+            <span class="star" data-star="4">&#9733;</span>
+            <span class="star" data-star="5">&#9733;</span>
+        </div>
+        <p id="review-text"></p>
+        <button onclick="submitReview()">Gửi Đánh Giá</button>
+    </div>
+    <!-- Đánh giá -->
+    <script>
+        // Khởi tạo biến selectedStars để lưu trữ số sao đã chọn
+        let selectedStars = 0;
+
+        // Lặp qua tất cả các phần tử có class 'star' và thêm các sự kiện cho chúng
+        document.querySelectorAll('.star').forEach(star => {
+            // Sự kiện khi di chuột qua một ngôi sao
+            star.addEventListener('mouseover', () => {
+                // Hiển thị số sao tương ứng với ngôi sao đang được di chuột qua
+                highlightStars(star.dataset.star);
+            });
+
+            // Sự kiện khi di chuột ra khỏi một ngôi sao
+            star.addEventListener('mouseout', () => {
+                // Hiển thị số sao đã chọn trước đó
+                highlightStars(selectedStars);
+            });
+
+            // Sự kiện khi người dùng click vào một ngôi sao
+            star.addEventListener('click', () => {
+                // Lưu số sao đã chọn và hiển thị lại
+                selectedStars = star.dataset.star;
+                highlightStars(selectedStars);
+            });
+        });
+
+        // Hàm để highlight các ngôi sao dựa trên số sao được chọn hoặc di chuột qua
+        function highlightStars(starCount) {
+            // Lặp qua tất cả các ngôi sao và thay đổi màu sắc tương ứng
+            document.querySelectorAll('.star').forEach(star => {
+                if (star.dataset.star <= starCount) {
+                    star.style.color = '#ffd700'; // Màu vàng cho ngôi sao được highlight
+                } else {
+                    star.style.color = '#ccc'; // Màu xám cho ngôi sao không được highlight
+                }
+            });
+        }
+
+        // Hàm để xử lý khi người dùng gửi đánh giá
+        function submitReview() {
+            const reviewText = document.getElementById('review-text');
+            if (selectedStars > 0) {
+                reviewText.textContent = `Cảm ơn bạn đã đánh giá ${selectedStars} sao!`;
+            } else {
+                reviewText.textContent = 'Vui lòng chọn số sao trước khi gửi đánh giá.';
+            }
+        }
+    </script>
+</body>
+</html>

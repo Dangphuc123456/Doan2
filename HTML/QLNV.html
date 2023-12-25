@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quan lý nhân viên</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid #ddd;
+    }
+
+    th,
+    td {
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #4caf50;
+      color: #fff;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    label {
+      margin-top: 10px;
+    }
+
+    input,
+    select {
+      height: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <div style="width: 100%; height:80px; font-size: large;color:black;" >
+
+    <div style="height:80px ; width:25% ;  float: left;margin-left: 30px; ">
+      <a href="#" style="float: left; color: #FF8C00; padding: 30px 30px; text-decoration: none; ">ADMIN</a>
+      <!-- <a href="Dangnhap.HTML" id="logoutLink" style="float: left; color: #FF8C00; padding: 30px 5px; text-decoration: none; " onclick="confirmLogout()">ĐĂNG XUẤT</a> -->
+      <i class="fa-solid fa-power-off" style="margin-left: -130px; padding:32px 0px; color: #FF8C00;"></i>  
+    </div>
+    <div style="height:80px ; width:70% ;  float: left;margin-left: 30px;  ">
+      <h3 style="margin-left: 180px;margin-top: 30px; color: #FF8C00; ">HỆ THỐNG QUẢN TRỊ </h3> 
+    </div>     
+  </div>
+  <p style="border-bottom: double 7px #00B214"></p> 
+
+  <div class="container">
+    <a href="QUANTRI.HTML"><button>Thoát</button></a>
+    <h2 style="text-align: center;">Danh sách nhân viên</h2>
+    <form id="employeeForm">
+    <label for="maNhanVien">ID:</label>
+    <input type="text" id="maNhanVien" name="maNhanVien" placeholder="Nhập ID" required>
+
+    <label for="tenNhanVien">Tên nhân viên:</label>
+    <input type="text" id="tenNhanVien" name="tenNhanVien" placeholder="Nhập tên nhân viên" required>
+
+    <label for="gioiTinh">Giới tính:</label>
+    <select id="gioiTinh" name="gioiTinh" required>
+        <option value="">Chọn giới tính</option>
+        <option value="Nam">Nam</option>
+        <option value="Nữ">Nữ</option>
+        <option value="Khác">Khác</option>
+    </select>
+
+    <label for="diaChi">Địa chỉ:</label>
+    <input type="text" id="diaChi" name="diaChi" placeholder="Nhập địa chỉ" required>
+
+    <label for="dienThoai">Phone:</label>
+    <input type="tel" id="dienThoai" name="dienThoai" placeholder="Nhập số điện thoại" required>
+
+    <label for="ngaySinh">Ngày sinh:</label>
+    <input style="margin-bottom: 30px;" type="date" id="ngaySinh" name="ngaySinh" placeholder="Chọn ngày sinh" required>
+</form>
+
+
+    <!-- Employee Table -->
+    <table id="employeeTable">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Tên nhân viên</th>
+          <th>Giới tính</th>
+          <th>Địa chỉ</th>
+          <th>Phone</th>
+          <th>Ngày sinh</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="employeeTableBody"></tbody>
+    </table>
+    
+    <!-- Save Button -->
+    <button style="width: 100px;" type="button" onclick="addEmployee()">Add</button>
+    <button style="float: right;" onclick="saveEmployeeData()">Save</button>
+  </div>
+
+  <script>
+   // Tải dữ liệu nhân viên đã lưu từ bộ nhớ cục bộ
+    window.onload = function() {
+      loadEmployeeData();
+    };
+
+    function addEmployee() {
+      // Lấy giá trị từ form
+      var maNhanVien = document.getElementById("maNhanVien").value;
+      var tenNhanVien = document.getElementById("tenNhanVien").value;
+      var gioiTinh = document.getElementById("gioiTinh").value;
+      var diaChi = document.getElementById("diaChi").value;
+      var dienThoai = document.getElementById("dienThoai").value;
+      var ngaySinh = document.getElementById("ngaySinh").value;
+
+     // Tạo một hàng mới trong bảng
+      var tableBody = document.getElementById("employeeTableBody");
+      var newRow = tableBody.insertRow(tableBody.rows.length);
+      
+   // Chèn ô vào hàng mới
+      var cell1 = newRow.insertCell(0);
+      var cell2 = newRow.insertCell(1);
+      var cell3 = newRow.insertCell(2);
+      var cell4 = newRow.insertCell(3);
+      var cell5 = newRow.insertCell(4);
+      var cell6 = newRow.insertCell(5);
+      var cell7 = newRow.insertCell(6);
+
+      // Điền thông tin nhân viên vào các ô
+      cell1.innerHTML = maNhanVien;
+      cell2.innerHTML = tenNhanVien;
+      cell3.innerHTML = gioiTinh;
+      cell4.innerHTML = diaChi;
+      cell5.innerHTML = dienThoai;
+      cell6.innerHTML = ngaySinh;
+
+      // Thêm nút xóa vào hàng
+      cell7.innerHTML = '<button onclick="deleteEmployeeRow(this)">Delete</button>';
+
+      // Xóa các trường của biểu mẫu sau khi thêm nhân viên
+      document.getElementById("employeeForm").reset();
+    }
+    // Hàm xóa một hàng
+    function deleteEmployeeRow(button) {
+      var row = button.parentNode.parentNode;
+      row.parentNode.removeChild(row);
+    }
+
+    // Chức năng lưu dữ liệu nhân viên vào bộ nhớ cục bộ
+    function saveEmployeeData() {
+      var tableBody = document.getElementById("employeeTableBody");
+      var data = [];
+
+      // Lặp qua các hàng và lưu dữ liệu
+      for (var i = 0; i < tableBody.rows.length; i++) {
+        var row = tableBody.rows[i];
+        var rowData = {
+          maNhanVien: row.cells[0].innerHTML,
+          tenNhanVien: row.cells[1].innerHTML,
+          gioiTinh: row.cells[2].innerHTML,
+          diaChi: row.cells[3].innerHTML,
+          dienThoai: row.cells[4].innerHTML,
+          ngaySinh: row.cells[5].innerHTML
+        };
+        data.push(rowData);
+      }
+
+      // Lưu dữ liệu vào bộ nhớ cục bộ
+      localStorage.setItem("employeeData", JSON.stringify(data));
+
+      alert("Đã lưu dữ liệu nhân viên!");
+    }
+
+    // Chức năng tải dữ liệu nhân viên từ bộ nhớ cục bộ
+    function loadEmployeeData() {
+      var tableBody = document.getElementById("employeeTableBody");
+      var data = JSON.parse(localStorage.getItem("employeeData")) || [];
+
+      // Populate table with saved data
+      for (var i = 0; i < data.length; i++) {
+        var row = tableBody.insertRow(tableBody.rows.length);
+
+       // Chèn ô vào hàng mới
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        var cell5 = row.insertCell(4);
+        var cell6 = row.insertCell(5);
+        var cell7 = row.insertCell(6);
+
+       // Điền thông tin nhân viên vào các ô
+        cell1.innerHTML = data[i].maNhanVien;
+        cell2.innerHTML = data[i].tenNhanVien;
+        cell3.innerHTML = data[i].gioiTinh;
+        cell4.innerHTML = data[i].diaChi;
+        cell5.innerHTML = data[i].dienThoai;
+        cell6.innerHTML = data[i].ngaySinh;
+
+        // Thêm nút xóa vào hàng
+        cell7.innerHTML = '<button onclick="deleteEmployeeRow(this)">Delete</button>';
+      }
+    }
+  </script>
+  <div class="footer-item">
+    <style>
+      .footer-item {
+        border: 1px solid transparent;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+      }
+    
+      .footer,
+      ul,
+      li {
+        margin: 0;
+        padding: 0;
+        color: #fff; 
+      }
+    
+      ul,
+      a {
+        cursor: pointer;
+        text-decoration: none;
+       
+      }
+    
+      footer {
+        background-color: gray;
+        color: white;
+        text-align: center;
+        padding: 20px;
+      }
+    
+      .footer-columns {
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;/* căn theo dọc */
+        flex-wrap: wrap; /* ngắt dòng */
+      }
+    
+      .footer-column {
+        flex: 1; 
+        max-width: 300px;
+        margin: 10px; 
+      }
+    
+      .center-image {
+        max-width: 100%;
+        margin: 10px;
+      }
+    
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    
+      .social-icons a {
+        margin: 0 10px;
+      }
+    
+      .social-icons img {
+        width: 30px;
+        height: 30px;
+      }
+    
+     /* Thêm kiểu mới cho hai cột có văn bản trên một hàng */
+      .footer-column ul {
+        display: flex;
+        flex-direction: column;
+      }
+    
+      .footer-column ul li {
+        margin-bottom: 10px;
+      }
+      .footer-column ul a {
+      color: white;
+      }
+    </style>
+  <footer>
+    <ul class="footer-columns">
+      <li class="footer-column">
+        <h3>Thông tin liên hệ </h3>
+        <ul >
+          <li ><a href="#">Hỗ trợ chăm sóc khách hàng: 098xxxx442</a></li>
+          <li><a href="#">Email: dangphucvghy195@gmail.com</a></li>
+          <li><a href="#">Hỗ trợ đặt hàng: 096xxxx836</a></li>
+        </ul>
+      </li>
+      <li class="footer-column">
+        <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/396666030_6693421187402854_5381472096329388871_n.png?stp=dst-png_p206x206&_nc_cat=100&ccb=1-7&_nc_sid=510075&_nc_eui2=AeFcvxLm4DrjQcz9GuFVrgoiYaKNGTwR-SJhoo0ZPBH5Iu8jmXtATcpQR51wqEf8bGZjDyybCS2WagEBsbP0_6VF&_nc_ohc=Tucf6CQxJAwAX_PMXce&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdRzhinRdrmoARAwzzdhCF_tcLSfZhjwkETyptosZ45sWw&oe=657E6FBC" alt="Logo" class="center-image">
+        <div class="social-icons">
+          <a href="https://www.google.com" target="_blank"><img src="https://img.idesign.vn/2023/02/idesign_logogg_1.jpg" alt="Google"></a>
+          <a href="https://www.facebook.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1200px-Facebook_Logo_%282019%29.png" alt="Facebook"></a>
+          <a href="https://www.twitter.com" target="_blank"><img src="https://cdn.pixabay.com/photo/2017/08/23/11/30/twitter-2672572_1280.jpg" alt="Twitter"></a>
+        </div>
+      </li>
+      <li class="footer-column">
+        <h3>Hỗ trợ khách hàng</h3>
+        <ul>
+          <li><a href="#">Hướng dẫn mua hàng online </a></li>
+          <li><a href="#">Thông tin khuyến mại</a></li>
+          <li><a href="#">Góp ý, khiếu lại</a></li>
+        </ul>
+      </li>
+    </ul>
+  </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập</title>
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+      body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+      }
+
+      h2 {
+          text-align: center;
+          color: #333;
+      }
+
+      form {
+          max-width: 300px;
+          margin: 20px auto;
+          padding: 20px;
+          background-color: #fff;
+          border-radius: 8px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      div {
+          margin-bottom: 15px;
+      }
+
+      label {
+          display: block;
+          margin-bottom: 5px;
+          color: #555;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+          width: calc(100% - 12px); /* Consider padding and border */
+          padding: 8px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+      }
+
+      #showPassword {
+          margin-left: 5px;
+      }
+
+      button {
+          width: 100%;
+          background-color: #4caf50;
+          color: white;
+          padding: 10px 15px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+      }
+
+      button:hover {
+          background-color: #45a049;
+      }
+
+      p {
+          margin-top: 15px;
+      }
+
+      a {
+          color: #1e90ff;
+          text-decoration: none;
+      }
+
+      a:hover {
+          text-decoration: underline;
+      }
+
+    </style>
+</head>
+<body>
+    <h2>Đăng nhập</h2>
+    <form>
+        <div>
+            <label for="username">Tên đăng nhập:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div>
+            <label for="password">Mật khẩu:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div>
+            <label>
+                <input type="checkbox" id="showPassword" onchange="togglePassword()"> Hiển thị mật khẩu
+            </label>
+        </div>
+        <div>
+            <button type="button" onclick="login()">Đăng nhập</button>
+        </div>
+        <div>
+            <p>Bạn chưa có tài khoản?
+                <a href="Dangky.HTML">Đăng ký</a>
+            </p>
+        </div>
+    </form>
+
+    <script>
+        function login() {//hàm
+    var predefinedAdminUsername = "admin";//khai báo biến
+    var predefinedAdminPassword = "123";
+    var predefinedUserUsername = "khachhang";
+    var predefinedUserPassword = "345";
+
+    var enteredUsername = $('#username').val();
+    var enteredPassword = $('#password').val();
+                //kiểm tra thông tin đăng nhập
+    if ((enteredUsername === predefinedAdminUsername && enteredPassword === predefinedAdminPassword) ||
+        (enteredUsername === predefinedUserUsername && enteredPassword === predefinedUserPassword)) {
+        //hiển thị thông báo và chuyển hướng  
+        alert("Đăng nhập thành công!");
+        if (enteredUsername === predefinedAdminUsername) {//kiểm tra điều kiện nếu trả về True thì chuyển sang QT 
+            window.location.href = "QUANTRI.HTML";        //còn nếu false thì chuyển sang TT
+        } else {
+            window.location.href = "TrangChu.HTML";
+        }
+    } else {
+        //thông báo lỗi khi check 1 trong 2 bị sai hoặc thiếu
+        alert("Tên đăng nhập hoặc mật khẩu sai! Vui lòng nhập lại!");
+    }
+}
+
+//check pass word
+function togglePassword() {
+    var passwordField = document.getElementById("password");
+    var showPasswordCheckbox = document.getElementById("showPassword");
+
+    if (showPasswordCheckbox.checked) {//check xem có được chọn để xem pass hay k
+        
+        passwordField.type = "text";
+    } else {
+        passwordField.type = "password";
+    }
+}
+
+    </script>
+</body>
+</html>
